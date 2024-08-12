@@ -1,2 +1,1 @@
-nombre = "Santiago Daniel"
-apellido = "Bareiro"
+print("xd")
