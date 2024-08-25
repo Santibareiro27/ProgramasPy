@@ -1,7 +1,6 @@
 import datetime as dt
 
 class Movimiento:
-    def __init__(self, monto: float, fechahora = dt.datetime.timestamp(), tipo = 'C') -> None:
+    def __init__(self, monto: float) -> None:
         self.monto = monto
-        self.fechahora = fechahora
-        self.tipo = tipo
+        self.fechahora = dt.datetime.now()
