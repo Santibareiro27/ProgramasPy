@@ -1,13 +1,8 @@
-from datetime import date
-
 class Persona:
-    '''
-    tu vieja
-    '''
-    def __init__(self, apellido: str, nombre: str, nacimiento: date) -> None:
+    def __init__(self, apellido: str, nombre: str, dni) -> None:
         self.__apellido = apellido
         self.__nombre = nombre
-        self.__nacimiento = nacimiento
+        self.__dni = dni
     
     @property #Decorador property (para lectura)
     def apellido(self):
