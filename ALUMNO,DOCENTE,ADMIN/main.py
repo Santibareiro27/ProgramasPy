@@ -3,26 +3,19 @@ from administrativo import Administrativo
 from alumno import Alumno
 from comision import Comision
 
-comisionx = Comision("Fisica I","Comision 1","D1")
-docente1 = Docente("Jorge","Telleria", "Ingeniero","12345678","123",100000)
-comisionx.NuevoIntegrante(docente1)
-alumno1 = Alumno("Bareiro","Santiago Daniel","87654321","101")
-comisionx.NuevoIntegrante(alumno1)
+comisionx = Comision("F12","Fisica I","Comision 1","D1")
+comisionx.NuevoDocente("Telleria","Juan", "responsable","12345678","123",150000)
+comisionx.NuevoDocente("Molina","Jorge", "adjunto","12345670","124",100000)
+
+comisionx.NuevoAlumno("Bareiro","Santiago Daniel","87654321","101")
 
 comisionx.ListarIntegrantes()
 
 legajoBuscado = input("\nIngrese el legajo del alumno que desea buscar: ")
-alumnoBuscado = comisionx.BuscarIntegrante(legajoBuscado,'A')
-if isinstance(alumnoBuscado,Alumno):
-    print("Alumno encontrado: ",alumnoBuscado.apellido,alumnoBuscado.nombre,"dni:",alumnoBuscado.dni)
-elif alumnoBuscado == 0:
-    print("No se encontro el alumno buscado")
+comisionx.MostrarAlumno(legajoBuscado)
 
-legajoBuscado = input("\nIngrese el legajo del alumno que desea eliminar: ")
-match (comisionx.EliminarIntegrante(legajoBuscado,'A')):
-    case 1:
-        print("Eliminacion exitosa")
-    case 0:
-        print("No se encontro el alumno buscado")
-    
+legajoBuscado = input("\nIngrese la matricula del docente que desea eliminar: ")
+
+comisionx.EliminarDocente(legajoBuscado)
+
 comisionx.ListarIntegrantes()
