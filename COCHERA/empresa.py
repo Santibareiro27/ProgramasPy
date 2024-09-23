@@ -1,12 +1,19 @@
 from galpon import Galpon
 
 class Empresa:
-    def __init__(self, razonSocial: str) -> None:
+    def __init__(self, razonSocial: str, cuit: str) -> None:
         self.razonSocial = razonSocial
+        self.cuit = cuit
         self.galpones = {} #key: id,value: Galpon
+        self.id_actaul = 1
     
-    def AgregarGalpon(self, id: int, ubi: str, capacidad: int, nombre: str):
-        self.galpones[id] = Galpon(id, ubi, capacidad, nombre)
+    def AgregarGalpon(self, ubi: str, capacidad: int, nombre: str):
+        self.galpones[self.id_actaul] = Galpon(self.id_actaul, ubi, capacidad, nombre)
+        self.id_actaul += 1
         
     def EliminarGalpon(self, id: int):
-        self.galpones.pop(id)
+        if id in self.galpones:
+            self.galpones.pop(id)
+            return True
+        else:
+            return False
