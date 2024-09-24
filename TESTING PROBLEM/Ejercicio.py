@@ -19,22 +19,29 @@ def analizaString(cadena: str):
         cadena es un String con la frase a analizar.
         
     OUTPUT:
-        un String formateado según la consigna.
+        un String formateado según la consigna. "áéíóúÁÉÍÓÚ"
     '''
     
     ###############
-    cadena = "Hola, mi nombre es Ariel, soy una sirena, vivo bajo el mar"
+    abc = {}
     cantidad = 0
     for i in cadena:
         if i.isalpha():
-            c = cadena.count(i)
-            if i.isupper():
-                c += cadena.count(i.upper())
+            j = i.lower()
+            match j:
+                case 'á': j = 'a'
+                case 'é': j = 'e'
+                case 'í': j = 'i'
+                case 'ó': j = 'o'
+                case 'ú': j = 'u'
+            if j not in abc:
+                abc[j] = 1
             else:
-                c += cadena.count(i.lower())
-            if c > cantidad:
-                letra = i
-                cantidad = c
+                abc[j] += 1
+    for i in abc:
+        if abc[i] > cantidad:
+            cantidad = abc[i]
+            letra = i
     ###############
     
     
