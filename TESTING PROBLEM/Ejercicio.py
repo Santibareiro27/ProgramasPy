@@ -19,11 +19,11 @@ def analizaString(cadena: str):
         cadena es un String con la frase a analizar.
         
     OUTPUT:
-        un String formateado según la consigna. "áéíóúÁÉÍÓÚ"
+        un String formateado según la consigna.
     '''
     
     ###############
-    abc = {}
+    abc = {} #key = letra, value = contador de repeticiones
     cantidad = 0
     for i in cadena:
         if i.isalpha():
@@ -34,11 +34,11 @@ def analizaString(cadena: str):
                 case 'í': j = 'i'
                 case 'ó': j = 'o'
                 case 'ú': j = 'u'
-            if j not in abc:
+            if j not in abc: #si la letra no esta en el diccionario la agrega, sino le suma 1 a su contador
                 abc[j] = 1
             else:
                 abc[j] += 1
-    for i in abc:
+    for i in abc: #compara letra por letra cual tiene mas repeticiones
         if abc[i] > cantidad:
             cantidad = abc[i]
             letra = i
