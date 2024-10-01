@@ -6,8 +6,8 @@ class Clinica():
     def __init__(self, nombre: str) -> None:
         self.nombre = nombre
         self.pacientes = {} #key: documento
-        self.profesionales = {}
-        self.turnos = {}
+        self.profesionales = {} #key: matricula
+        self.turnos = {} #key: profesional, value: diccionario de dias de turnos -> (key: date, value: lista de turnos en un dia)
         
     def AgregarPaciente(self, documento: int, nombre: str, celular: int = None):
         if documento not in self.pacientes:
@@ -35,12 +35,12 @@ class Clinica():
         if not isinstance(prof,Profesional):
             raise ValueError("No se encontro el profesional")
 
-        diaturno = date(año, mes, dia)
-        diahoraturno = datetime(año, mes, dia, hora, minuto)
+        diaturno = date(año, mes, dia) #key para el diccionario de un profesional
+        diahoraturno = datetime(año, mes, dia, hora, minuto) #horario para el turno
         
-        if prof not in self.turnos.keys():
+        if prof not in self.turnos: #si hay un nuevo profesional crea su diccionario
             self.turnos[prof] = {}
-        if diaturno not in self.turnos[prof]:
+        if diaturno not in self.turnos[prof]: #si ese dia no tiene turnos, crea la lista de turnos de ese dia
             self.turnos[prof][diaturno] = []
         turnosdia = self.turnos[prof][diaturno]
         turno = Turno(paci,prof,diahoraturno)
