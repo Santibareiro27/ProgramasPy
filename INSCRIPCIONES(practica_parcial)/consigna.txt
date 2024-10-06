@@ -1,0 +1,36 @@
+Crear las clases necesarias para representar inscripciones de alumnos a comisiones de asignaturas.
+Alumno
+Un alumno estará representado por su matrícula solamente. La matrícula es un valor entero provisto al
+constructor de la clase.
+
+Asignatura
+Cada asignatura tendrá un nombre y una o varias comisiones. La asignatura podrá agregar y/o eliminar
+comisiones propias valiéndose de métodos. Para agregar una comisión deberá suministrar un nombre para
+la misma y (opcionalmente) un valor para el cupo de la comisión que se creará. El método se llamará
+AgregarComision. Si ya existe una comisión con el mismo nombre deberá disparar una excepción del tipo
+ComisionExistenteError con el mensaje "La comisión ya existe".
+También cada asignatura podrá eliminar comisiones suministrando su nombre. El método se llamará
+EliminarComision. Si la comisión no existe deberá disparar una excepción del tipo ComisionInexistenteError
+con el mensaje "La comisión no existe".
+Una asignatura deberá ser capaz de retornar una instancia comisión a través de un método llamado Comision
+que recibirá una cadena con texto que permita buscar comisiones por su nombre.
+
+Comision
+Una comisión tendrá nombre, cupo y gestionará las inscripciones de alumnos en ella como colección.
+Una comisión podrá agregar y eliminar alumnos. Para agregar un alumno lo hará a través de un método
+Agregar que reciba una instancia del tipo Alumno. Deberá chequear que la comisión no esté llena. Para
+ello deberá chequear que no se haya alcanzado el cupo de la misma. En caso de que la comisión esté llena
+se deberá disparar la excepción ComisionLlenaError con el mensaje "La comisión está llena". La misma
+deberá verificar que el alumno no se encuentre inscripto en la comisión. De ser así, se deberá disparar
+una excepción del tipo AlumnoInscriptoError con el mensaje "El alumno ya está inscripto". Para el caso de
+que no esté inscripto el alumno, lo agregará a su colección.
+Una inscripción estará representada por el tipo Inscripcion que tendrá los atributos alumno, alta
+y baja. El atributo alumno será una instancia del tipo Alumno, alta será un timestamp y baja por defecto
+será None.
+Por otra parte, la comisión deberá ser capaz de eliminar un alumno de sus registros. Esta tarea la hará
+mediante un método Eliminar que reciba una instancia del tipo Alumno.
+Se deberá chequear que el alumno esté inscripto en la comisión. En caso negativo se disparará un error del
+tipo InscripcionInexistenteError con el mensaje "No existe inscripción para este alumno".
+En el caso de que exista inscripción para el alumno solicitado, la baja se implementará mediante el registro
+del timestamp para el atributo baja de la inscripción correspondiente.
+Además, deberá de tener un método Alumnos_activos, que devolverá una colección con los alumnos que no estén eliminados o dados de baja.
