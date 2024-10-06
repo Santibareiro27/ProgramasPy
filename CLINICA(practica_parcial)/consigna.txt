@@ -1,0 +1,19 @@
+Representar los conceptos necesarios para modelar la gestión de turnos solicitados por pacientes con profesionales de la clínica.
+La Clinica posee un nombre y administra sus pacientes, profesionales y turnos.
+Para administrar pacientes y profesionales, sería apropiado hacer uso de herencia para reunir la información común de una Persona (documento, nombre, celular (opcional)).
+•	Respecto a la información particular, un Paciente registra la cantidad de turnos que ha solicitado (valor entero).
+•	Respecto a un Profesional, su matrícula (valor numérico) y su especialidad (texto).
+La clínica podrá agregar un paciente (Clinica.AgregarPaciente) verificando que no exista previamente en sus registros. Los pacientes serán registrados con sus documentos en la base
+de datos a fin de identificarlos.
+Por otra parte, la clínica también podrá agregar un profesional (Clinica.AgregarProfesional) suministrando la información necesaria para ello (además de lo necesario para
+una persona, su matrícula y especialidad). Se deberá controlar que el profesional no exista en la base de datos. Para tal fin, se usará su matrícula como identificador en la
+base de datos.
+La clínica posee métodos auxiliares para buscar un paciente (Clinica.BuscarPaciente) que se le proveerá un número de documento para localizarlo y retornarlo. En caso de que no se
+encuentre el paciente, deberá retornar None.
+Otro método auxiliar será para buscar un profesional (Clinica.BuscarProfesional) que se le proveerá un número de matrícula para localizarlo y retornarlo. En caso de que no se
+encuentre el profesional, deberá retornar None.
+La clínica asignará turnos a pacientes para un profesional a elección (Clinica.AsignarTurno). Para ello se deberá proveer un documento, una matrícula y un día, mes, año, hora y
+minuto para el turno. Haciendo uso de los métodos auxiliares, deberá buscar el paciente y el profesional de interés, controlando que encuentre las instancias de los tipos
+correspondientes para generar el turno. Además, con los datos de día, mes, año, hora y minuto, se deberá generar un objeto turno correspondiente para registrar el turno asignado.
+NOTA: Para administrar los turnos se usará una base de datos que registre los turnos por profesional, y dentro de cada profesional, a su vez, se registrarán turnos para cada fecha y
+hora solicitados. El valor para el mismo será una instancia del turno.
