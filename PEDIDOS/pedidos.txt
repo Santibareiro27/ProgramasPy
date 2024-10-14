@@ -1,0 +1,11 @@
+Administracion
+pedidos: diccionario de pedidos. clave id pedido, valor instancias de Pedido
+productos: diccionario de productos. clave id producto, valor instancias de Producto
+crearPedido: crea una instancia limpia del tipo Pedido y la registra en el diccionario pedidos. Cada pedido tiene un id autogenerado.
+agregarProducto: Agrega una instancia de Producto a la colección productos. Cada producto id es autogenerado.
+agregarProductoAlPedido: agrega al pedido identificado por pedidoID, el producto identificado con productoID suministrado en la cantidad indicada por el argumento cantidad. Cuando agrega un producto debe considerar el hecho de que si el producto ya fue cargado al pedido, simplemente deberá modificar la cantidad en el detalle correspondiente. En caso contrario, simplemente agrega el producto y la cantidad indicada en un nuevo detalle que agregará al pedido.
+productosDePedido: recibe un pedidoID que identifica un pedido y retorna un set de ids de productos que están registrados en el pedido.
+productosPedidos: no recibe argumento y recorre la colección de pedidos y genera un diccionario con clave ID de producto y valor un entero con la cantidad total solicitada para el producto. Cantidad debe ser el acumulado para ese producto en todos los pedidos.
+Pedido.
+Cada pedido posee un id autogenerado y una lista con objetos Detalle.
+agregaProducto: recibe un productoID y una cantidad para crear un objeto detalle que registra en la colección detalles (lista). La ubicación en la lista de cada objeto detalle representa el orden en el cual un producto fue cargado en el detalle del pedido.

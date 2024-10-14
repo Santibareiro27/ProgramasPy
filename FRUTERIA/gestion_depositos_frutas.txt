@@ -1,0 +1,59 @@
+Administración.
+Es un punto de control y gestión de depósitos de frutas. Tiene un diccionario depósitos como atributo privado. El diccionario tiene
+como clave el nombre del depósito y como valor una instancia del depósito identificado por ese nombre.
+
+Métodos.
+
+agregarDeposito.
+Tiene por objetivo agregar instancias del tipo Deposito al diccionario usando como clave, el nombre del deposito.
+Para ello toma dos cadenas, nombre y direccion y no retorna nada.
+
+depositosEnUso.
+No toma parámetros y retorna un valor entero positivo o cero. Dicho método recorrerá su diccionario de depositos e indagará a cada
+instancia del tipo Deposito en su colección si el mismo está en uso actualmente o no. Para responder dicha pregunta, la instancia del
+tipo deposito retornará el valor de su atributo enUso (bool) que inicia en True cuando se crea la instancia.
+
+total.
+Toma una cadena fruta y retorna un entero que será positivo o cero. Para ello recorre su colección de depósitos e indaga a cada uno a
+través de su propio método total y pasándole el argumento fruta. Irá acumulando lo encontrado en cada depósito y lo retorna.
+
+totalDeposito.
+Toma dos argumentos del tipo cadena: fruta y deposito. Retorna un entero positivo o cero. Para ello deberá controlar que tenga en su
+colección una instancia del tipo Deposito identificada con el nombre en el parámetro deposito.
+Si encuentra una instancia en su colección retornará el total de ésa fruta que dicho depósito tiene en él. Para ello se valerá del
+método total de la instancia del depósito encontrado.
+Si no tiene un depósito con ese nombre retorna una excepcion con el mensaje "depósito inexistente".
+
+totalDescarte.
+Este método retorna la cantidad de cajones descartados de una fruta en particular. Por ello toma un argumento del tipo cadena de nombre
+fruta y retorna un valor entero positivo o cero.
+Para cumplir con su objetivo, el método recorre su colección de depositos y solicita el total de descartes a cada instancia pasándole
+el argumento fruta recibido y lo acumula para luego retornar el valor final de cajones descartados. Cada instancia responde a través
+de su propio metodo totalDescarte.
+
+totalDescarteDeposito.
+El método retorna un entero positivo o cero que representa la cantidad de cajones descartados de una fruta dada en un depósito
+especificado. Para ello el método recibe dos argumentos del tipo cadena: fruta y deposito.
+Pregunta a su colección de depósitos si contiene en el ella el deposito identificado en el argumento deposito. Si lo tiene, le
+solicita a la instancia que tiene almacenada que le de la cantidad descartada para la fruta que le fue suministrada.
+En el caso de que no tenga un despósito identificable con el nombre suministrado retornará 0.
+
+moverFrutas.
+Este método recibe 4 argumentos: fruta, cajones, desde, hacia. No retorna valor. El objetivo es mover cajones de una fruta desde
+un depósito a otro.
+Para cumplir con el objetivo el método primero indaga a su colección de depósitos si contiene los depósitos identificados en los
+argumentos desde y hacia. Si algunos de los dos o ambos no existen, dispara una excepción con el mensaje "depósito inexistente".
+Si ambos depósitos existen, consulta si el depósito desde el cual se extraerán los cajones tiene la fruta y la cantidad que se desea
+mover. En caso afirmativo, procede a realizar la extracción del depósito identificado por el parámetro desde en la cantidad solicitada
+y agregarlo al depósito identificado por el parámetro hacia. Para ambos casos utilizará el método adecuado (agregar o extraer) de la
+instancia Deposito.
+
+descartarFruta.
+El método recibe dos cadenas, fruta y deposito y un entero, cantidad. Busca en su colección de depósitos si existe el deposito
+identificado por el parametro deposito. En caso de que no exista el depósito dispara una excepción con el mensaje "depósito inexistente".
+En caso contrario, averigua si el depósito en cuestión tiene la fruta solicitada (lo averigua con el método contiene de la instancia)
+para el descarte de su existencia. Si tiene la fruta requerida agrega la cantidad de cajones de la fruta a su colección descartes y lo
+resta de la colección frutas del depósito. En todos los casos se modifican las cantidades de cajones para la fruta correspondiente.
+
+deshabilitar.
+Este método deshabilita el deposito asignando False a la propiedad enUso de la instancia.
