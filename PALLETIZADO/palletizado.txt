@@ -1,0 +1,49 @@
+Sistema de gestión de cargas 
+El sistema trata sobre la gestión de cargas palletizadas a partir de una serie de pedidos de clientes.
+
+Posee una clase administración, la misma posee propiedades que registran pedidos, productos y las cargas generadas a partir de los pedidos.
+La administración es responsable de agregar productos a la lista de productos de la empresa. Para ello, el método llamado agregarProducto
+recibirá como parámetros el id, su descripción y la cantidad de unidades del producto que caben en un pallet. De este modo se crea una instancia
+de la clase producto. Los productos o instancias de este tipo se almacenan en un diccionario llamado productos gestionado por la administración. 
+Por otra parte la administración también es responsable de gestionar los pedidos de los clientes. Para ello tiene un método llamado crearPedido
+que crea una instancia del tipo pedido que tiene un id automático, un atributo cargado que asume por defecto el valor falso indicando que dicho
+pedido no ha sido asignado a ninguna carga. Por último el pedido tiene un atributo detalle que es una lista del tipo detalle que posee dos
+atributos, productoID que es el identificador del producto que se está pidiendo y la cantidad del mismo.
+
+El tipo pedido posee dos responsabilidades. agregarProducto que recibe el ID de un producto y la cantidad y lo que hace es agregar ese producto
+identificado por el ID suministrado que previamente tuvo que haber sido cargado a la lista de productos para poder agregarlo al detalle. En el
+caso del detalle, está representado en una lista porque necesitamos establecer un orden en el ingreso de los productos en el mismo.
+Pedido también posee una responsabilidad llamada cantidadDePallets que calcula la cantidad de pallets necesarios para palletizar el pedido entero.
+Esta unidad se expresa en pallets enteros, inclusive en casos donde no se utiliza la totalidad del pallet.
+
+Otra responsabilidad o método del objeto administración es agregarProductoAlPedido que toma tres argumentos, el identificador del pedido, el
+identificador del producto y una cantidad. Este método busca el pedido de la colección de pedidos de la administracion y haciendo uso del método
+agregarProducto del pedido agrega ese producto identificado y su cantidad al pedido correspondiente. 
+Otra colección que administra el objeto administración son las cargas. Una carga tiene una id autogenerado, una capacidad indicando la cantidad
+de pallets que componen la carga, el número de pedido asociado a esa carga y un detalle de los pallets que componen la carga. Ese detalle de
+pallet es un diccionario llamado pallets.
+
+Una carga está formada o compuesta por pallets. Cada pallet puede contener únicamente el mismo tipo de producto o sea el producto identificado
+por el mismo ID. Por ello el tipo pallet tiene un id auto incremental o sea autogenerado después tiene otro atributo que es el producto que
+corresponde al ID del producto asociado a ese pallet, la capacidad de ese pallet que indica la cantidad para el producto que podemos palletizar.
+Esa cantidad la obtiene del producto, es decir, de la instancia del producto que está registrado. Ese valor representa la cantidad máxima del
+producto que se puede palletizar. Por último el pallet posee una propiedad llamada utilizado indicando la cantidad unidades que fueron cargadas
+o asignadas al pallet. 
+Por último el método armarCarga del objeto administración que es el más complejo recibe un argumento con el identificador del pedido. 
+Este método llama al otro método de administración llamado crearCarga que es el responsable de crear un objeto carga totalmente vacío. Cada objeto
+carga tiene una id auto incremental, una capacidad que indica la cantidad de pallets que va a contener esa carga que por defecto asume 20 y pedido
+que es otro atributo de carga que tendrá el número de pedido que se le pasa al método armarCarga.
+A continuación el método armarCarga toma el primer producto del detalle del pedido y consulta al objeto carga si ese id de producto ya está en el
+conjunto (set) de productos asociados a la carga. Esto es importante debido a que si la carga ya tiene un pallet asociado con esa id de producto
+debe cargar la nueva cantidad para reflejar en el pallet existente. En este caso deberá controlar que la cantidad que se va a agregar al pallet no
+supere su capacidad. De ser así, se debe habilitar otro pallet vacío para agregar lo que resta del producto. En caso contrario es decir que el
+producto no haya sido aún asociado a algún pallet de esa carga, deberá crear un pallet vacío y  asociarlo a ese producto y e inicializar con la
+cantidad indicada en el detalle. Este proceso continúa hasta agotar el detalle del pedido para el cual se arma la carga.
+
+Palletizado de pedidos.
+Gestiona el palletizado de productos provenientes de pedidos de clientes.
+
+Clase Producto.
+Representa un producto que puede participar en los pedidos.
+
+
