@@ -18,7 +18,7 @@ class Pedido():
     def CantidadDePallets(self) -> int:
         pallets = 0
         for detalle in self.detalles:
-            pallets += detalle.cantidad/detalle.producto.palletizado
+            pallets += detalle.cantidad/20
         if pallets % 1 == 0:
             return int(pallets)
         else:
