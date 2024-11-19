@@ -13,5 +13,9 @@ try:
     c = int(a) + int(b)
     if c < 0: raise NumeroNegativoError
     if c == 0: raise NumeroCeroError
+except NumeroNegativoError:
+    raise NumeroNegativoError()
+except NumeroCeroError:
+    print("esto se imprime si el resultado es 0")
 finally:
-    print("oe me vale tu error")
+    print("esto se imprime siempre")
